@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductsService } from './products-test.service';
 import {Observable} from 'rxjs';
@@ -13,11 +13,14 @@ import {Observable} from 'rxjs';
 export class ProductsGridComponent implements OnInit{
 
     products$!: Observable<Product[]>;
+    // tslint:disable-next-line: no-input-rename
+    @Input('searchedText') searchedText = '';
 
     constructor(private productService: ProductsService){
     }
   ngOnInit(): void {
     this.products$ = this.productService.getProducts();
-}
+    console.log(this.searchedText);
+  }
 
 }

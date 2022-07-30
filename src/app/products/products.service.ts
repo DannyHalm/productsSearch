@@ -70,7 +70,7 @@ export class ProductsService {
   }
 
   public getWithLatestQuantity() {
-    //Update this logic to pass the failing test
+    // Update this logic to pass the failing test
     return combineLatest([
       getProduct,
       getQuantity]
