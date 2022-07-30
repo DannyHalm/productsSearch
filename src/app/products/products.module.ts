@@ -1,9 +1,12 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { ProductsGridComponent } from "./products-grid.component";
+import { ProductsGridComponent } from './products-grid.component';
+import { ProductsService } from './products-test.service';
 
 @NgModule({
   imports: [
+     BrowserModule
   ],
   declarations: [
     ProductsGridComponent
@@ -12,6 +15,7 @@ import { ProductsGridComponent } from "./products-grid.component";
     ProductsGridComponent
   ],
   providers: [
+    ProductsService
   ]
 })
 
