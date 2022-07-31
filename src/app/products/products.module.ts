@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { ProductsGridComponent } from './products-grid.component';
 import { ProductsService } from './products-test.service';
+import { ProductFilterPipe } from './product-filter.pipe';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { ProductsService } from './products-test.service';
      FormsModule
   ],
   declarations: [
-    ProductsGridComponent
+    ProductsGridComponent,
+    ProductFilterPipe
   ],
   exports: [
     ProductsGridComponent

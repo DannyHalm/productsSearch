@@ -21,8 +21,8 @@
       </th>
     </tr>
   </thead>
-  <tbody>
-      <tr *ngFor="let product of products$ | async">
+  <tbody >
+       <tr *ngFor="let product of products$ | async | productFilter:searchString">
       <th>
         {{product.id}}
       </th>
@@ -44,5 +44,3 @@
     </tr>
   </tbody>
 </table>
-
-{{searchedText}}

@@ -14,13 +14,12 @@ export class ProductsGridComponent implements OnInit{
 
     products$!: Observable<Product[]>;
     // tslint:disable-next-line: no-input-rename
-    @Input('searchedText') searchedText = '';
+    @Input('searchString') searchString: string;
 
     constructor(private productService: ProductsService){
     }
   ngOnInit(): void {
     this.products$ = this.productService.getProducts();
-    console.log(this.searchedText);
   }
 
 }

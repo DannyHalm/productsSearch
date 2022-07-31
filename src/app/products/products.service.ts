@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, combineLatest, Observable} from 'rxjs';
-import { map } from 'rxjs/operators';
+import { of, Observable} from 'rxjs';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -8,8 +7,7 @@ import { Product } from '../models/product';
 })
 export class ProductsService {
 
-  public getProducts(): Observable<Product[]> {
-    return of([
+  private products$: Observable<Product[]> = of([
       {
         id: 'AC7655_580',
         name: 'adidas Men Outdoor Terrex Agravic Xt Gore-Tex Trail Running Shoes',
@@ -67,20 +65,9 @@ export class ProductsService {
         quantity: 2
       }
     ]);
-  }
 
-  public getWithLatestQuantity() {
-    // Update this logic to pass the failing test
-    return combineLatest([
-      getProduct,
-      getQuantity]
-    )
-      .pipe(map(result => {
-        return { name: result[0], quantity: result[1] }
-      }));
-
-  }
+  // : Observable<Product[]>
+  public getProducts(): Observable<Product[]> {
+    return this.products$;
 }
-
-const getProduct = of('product1');
-const getQuantity = of(2, 8);
+}
