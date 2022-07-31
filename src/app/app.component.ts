@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, take} from 'rxjs/operators';
 import { Product } from './models/product';
 import { ProductsService } from './products/products.service';
 
@@ -20,8 +21,13 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.productService.getProducts();
   }
-  onSearchStringChanged(): void{
-    this.products$ = this.productService.getProducts();
+  onSearchStringChanged(inputChanged: Observable<string>): void{
+    inputChanged.pipe(
+      take(4),
+      debounceTime(400),
+      distinctUntilChanged(),
+    ).subscribe( _ => this.products$ = this.productService.getProducts());
+
   }
 
 }
