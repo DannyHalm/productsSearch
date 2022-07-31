@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
   }
   onSearchStringChanged(inputChanged: Observable<string>): void{
     inputChanged.pipe(
-      take(4),
       debounceTime(400),
+      take(4),
       distinctUntilChanged(),
     ).subscribe( _ => this.products$ = this.productService.getProducts());
 
