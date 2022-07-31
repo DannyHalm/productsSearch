@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from '../models/product';
-import { ProductsService } from './products-test.service';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -9,17 +8,10 @@ import {Observable} from 'rxjs';
   templateUrl: 'products-grid.component.html',
   styleUrls: [],
   providers: []
-})
-export class ProductsGridComponent implements OnInit{
-
-    products$!: Observable<Product[]>;
+}) //
+export class ProductsGridComponent {
     // tslint:disable-next-line: no-input-rename
     @Input('searchString') searchString: string;
-
-    constructor(private productService: ProductsService){
-    }
-  ngOnInit(): void {
-    this.products$ = this.productService.getProducts();
-  }
-
+    // tslint:disable-next-line: no-input-rename
+    @Input('products$') products$: Observable<Product[]>;
 }

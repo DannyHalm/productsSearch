@@ -116,10 +116,12 @@
       <label for="search">Search</label>
       <input id="search" [(ngModel)]="searchString" (input)="onSearchStringChanged()" />
     </div>
-    <div class="filter">
-      <label for="brands">Brands</label>
-      <select id="brands"> </select>
-    </div>
+      <div class="filter">
+        <label for="brands">Brands</label>
+        <select id="brands">
+          <option *ngFor="let product of products$ | async">{{product.brand}}</option>
+        </select>
+      </div>
     <div class="filter">
       <label for="in-stock">All</label>
       <input type="radio" id="in-stock" name="stock" value="all" checked>
@@ -130,7 +132,7 @@
     </div>
   </div>
   <div class="container">
-    <products-table [searchString] ="searchString">
+    <products-table [searchString] ="searchString" [products$]="products$">
     </products-table>
   </div>
 </div>

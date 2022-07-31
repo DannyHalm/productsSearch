@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Product } from './models/product';
 import { ProductsService } from './products/products.service';
 
 @Component({
@@ -10,11 +12,16 @@ export class AppComponent implements OnInit {
   title = 'ir-dev-test';
 
   searchString = '';
+  brands: string[] = [];
+  products: Product[] = [];
+  products$: Observable<Product[]>;
 
   constructor(private productService: ProductsService) {}
   ngOnInit(): void {
+    this.products$ = this.productService.getProducts();
   }
   onSearchStringChanged(): void{
-    this.productService.getProducts();
+    this.products$ = this.productService.getProducts();
   }
+
 }
