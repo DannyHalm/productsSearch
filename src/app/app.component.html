@@ -114,7 +114,7 @@
   <div class="container">
     <div class="filter">
       <label for="search">Search</label>
-      <input id="search" [(ngModel)]="searchString" (input)="onSearchStringChanged($event)" />
+      <input id="search" [formControlName] = "searchControl" />
     </div>
       <div class="filter">
         <label for="brands">Brands</label>
